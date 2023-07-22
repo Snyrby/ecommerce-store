@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import qs from "query-string";
 
 import { Color, Size } from "@/types";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface FilterProps {
     data: (Size | Color)[];
