@@ -34,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
         />
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">
-            <Popover className="relative">
+            <Popover>
               {({ open }) => (
                 <>
                   <Popover.Button
@@ -62,26 +62,48 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
                     leaveFrom="opacity-100 translate-y-0"
                     leaveTo="opacity-0 translate-y-1"
                   >
-                    <Popover.Panel className="absolute bottom-[100%] z-10 bg-slate-400 rounded-xl p-1">
-                      <div className="flex w-20">
-                        <p className="">
-                          test button
-                        </p>
-                      </div>
+                    <Popover.Panel className="absolute mb-2 left-[5.25rem] bottom-[100%] z-10 bg-gray-100  rounded-xl p-1">
+                      <p className="text-sm">Expand</p>
                     </Popover.Panel>
                   </Transition>
                 </>
               )}
             </Popover>
-            <div
-              className="toolTip before:content-[attr(data-tip)]"
-              data-tip="Add&nbsp;to&nbsp;cart"
-            >
-              <IconButton
-                onClick={() => {}}
-                icon={<ShoppingCart size={20} className="text-gray-600" />}
-              />
-            </div>
+            <Popover>
+              {({ open }) => (
+                <>
+                  <Popover.Button
+                    onMouseEnter={(
+                      event: React.MouseEvent<HTMLButtonElement>
+                    ) => event.currentTarget.click()}
+                    onMouseLeave={(
+                      event: React.MouseEvent<HTMLButtonElement>
+                    ) => event.currentTarget.click()}
+                  >
+                    <IconButton
+                      onClick={() => {}}
+                      icon={
+                        <ShoppingCart size={20} className="text-gray-600" />
+                      }
+                    />
+                  </Popover.Button>
+                  <Transition
+                    show={open}
+                    as={Fragment}
+                    enter="transition ease-out duration-200"
+                    enterFrom="opacity-0 translate-y-1"
+                    enterTo="opacity-100 translate-y-0"
+                    leave="transition ease-in duration-150"
+                    leaveFrom="opacity-100 translate-y-0"
+                    leaveTo="opacity-0 translate-y-1"
+                  >
+                    <Popover.Panel className="absolute mb-2 right-[25%] bottom-[100%] z-10 bg-gray-100  rounded-xl p-1 ring-2 ring-slate-300 shadow-2xl">
+                      <p className="text-sm">Add To Cart</p>
+                    </Popover.Panel>
+                  </Transition>
+                </>
+              )}
+            </Popover>
           </div>
         </div>
       </div>
