@@ -6,6 +6,8 @@ const font = Urbanist({ subsets: ["latin"] });
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import ModalProvider from "@/providers/ModalProvider";
+import ToastProvider from "@/providers/ToastProvider";
 
 export const metadata: Metadata = {
   title: "Store",
@@ -20,6 +22,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <ModalProvider />
+        <ToastProvider />
         <Navbar />
         {children}
         <Footer />
